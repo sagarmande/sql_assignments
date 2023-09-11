@@ -1,0 +1,23 @@
+CREATE FUNCTION dbo.SplitString
+(
+    @InputString NVARCHAR(MAX),
+    @Delimiter NVARCHAR(1)
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT value AS SplitValue
+    FROM STRING_SPLIT(@InputString, @Delimiter)
+);
+-- Example usage
+DECLARE @InputString NVARCHAR(MAX) = 'Stephen;peter;berry;Olivier;caroline;';
+SELECT SplitValue
+FROM dbo.SplitString(@InputString, ';');
+SplitValue
+----------
+Stephen
+peter
+berry
+Olivier
+caroline
