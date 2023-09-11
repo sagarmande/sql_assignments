@@ -1,0 +1,55 @@
+-- Create a sample table
+CREATE TABLE SampleTable (
+    ID INT PRIMARY KEY,
+    Name NVARCHAR(50)
+);
+
+-- Create a stored procedure with exception handling
+CREATE PROCEDURE InsertData
+    @ID INT,
+    @Name NVARCHAR(50)
+AS
+BEGIN
+    BEGIN TRY
+        -- Attempt to insert data into the table
+        INSERT INTO SampleTable (ID, Name)
+        VALUES (@ID, @Name);
+        
+        -- If the insertion is successful, print a success message
+        PRINT 'Data inserted successfully.';
+    END TRY
+    BEGIN CATCH
+        -- If an error occurs, handle the exception
+        PRINT 'An error occurred: ' + ERROR_MESSAGE(); -- Print the error message
+        -- You can also log the error or perform other actions as needed.
+    END CATCH
+END;
+
+
+
+-- Create a sample table
+CREATE TABLE SampleTable (
+    ID INT PRIMARY KEY,
+    Name NVARCHAR(50)
+);
+
+-- Create a stored procedure with exception handling
+CREATE PROCEDURE InsertData
+    @ID INT,
+    @Name NVARCHAR(50)
+AS
+BEGIN
+    BEGIN TRY
+        -- Attempt to insert data into the table
+        INSERT INTO SampleTable (ID, Name)
+        VALUES (@ID, @Name);
+        
+        -- If the insertion is successful, print a success message
+        PRINT 'Data inserted successfully.';
+    END TRY
+    BEGIN CATCH
+        -- If an error occurs, handle the exception
+        PRINT 'An error occurred: ' + ERROR_MESSAGE(); -- Print the error message
+        -- You can also log the error or perform other actions as needed.
+    END CATCH
+END;
