@@ -1,0 +1,14 @@
+Purpose: Indexes are used to improve the speed of SELECT, UPDATE, DELETE, and MERGE operations by allowing the database engine to quickly locate the rows that match the conditions in the WHERE clause of a query.
+
+Structure: An index consists of one or more columns from the table, along with a pointer to the location of the corresponding row in the table. The columns included in the index are referred to as index key columns.
+
+Maintenance: While indexes improve query performance, they can also impact the speed of data modification operations (INSERT, UPDATE, DELETE) because the index must be updated whenever the data in the table changes. Therefore, it's essential to strike a balance between the number of indexes and the frequency of data modifications.
+
+CREATE INDEX idx_column_name ON table_name (column_name);
+CREATE INDEX idx_column1_column2 ON table_name (column1, column2);
+CREATE UNIQUE INDEX idx_unique_column ON table_name (column_name);
+CREATE CLUSTERED INDEX idx_clustered_column ON table_name (column_name);
+CREATE NONCLUSTERED INDEX idx_nonclustered_column ON table_name (column_name);
+CREATE FULLTEXT INDEX idx_fulltext_column ON table_name (column_name);
+CREATE BITMAP INDEX idx_bitmap_column ON table_name (column_name);
+CREATE SPATIAL INDEX idx_spatial_column ON table_name (column_name);
