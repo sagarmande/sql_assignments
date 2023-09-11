@@ -1,0 +1,44 @@
+Scope: Temporary tables are created within a specific session or connection and exist until the session is closed. They are typically used for storing and manipulating intermediate results within a session.
+
+Usage: Temporary tables are useful when you need to store and process a relatively large amount of data within a session. They are often used in complex queries, reporting, or when you need to break down a complex task into smaller, more manageable steps.
+
+Syntax (SQL Server):
+
+
+-- Create a temporary table
+CREATE TABLE #TempTable (
+    ID INT,
+    Name NVARCHAR(50)
+);
+
+-- Insert data into the temporary table
+INSERT INTO #TempTable (ID, Name)
+VALUES (1, 'John'), (2, 'Jane');
+
+
+
+Cleanup: Temporary tables are automatically dropped when the session ends or when they are explicitly dropped using DROP TABLE #TempTable;.
+
+Table Variable:
+
+Scope: Table variables are local to the current batch, function, or stored procedure in which they are declared. They are not limited to a specific session and do not persist beyond the scope of the batch or procedure.
+
+Usage: Table variables are suitable for storing and processing relatively small amounts of data within a specific scope. They are often used for encapsulating data and simplifying the query or procedure logic.
+
+Syntax (SQL Server):
+
+
+
+-- Declare a table variable
+DECLARE @TableVariable TABLE (
+    ID INT,
+    Name NVARCHAR(50)
+);
+
+-- Insert data into the table variable
+INSERT INTO @TableVariable (ID, Name)
+VALUES (1, 'John'), (2, 'Jane');
+
+
+
+
