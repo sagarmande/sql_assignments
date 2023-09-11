@@ -1,0 +1,62 @@
+Functions and stored procedures are database objects used for encapsulating a set of SQL statements and logic into a reusable unit. However, they have some key differences in terms of their purpose and usage.
+
+Stored Procedure:
+
+Purpose: Stored procedures are typically used for performing a specific action or task. They can be used to modify data, retrieve data, or perform any other operation within the database.
+
+Return Value: Stored procedures can return zero or more output parameters, but they do not return a result set directly. They are mainly used for their side effects.
+
+Transaction Control: Stored procedures can be used to control transactions explicitly. You can begin, commit, or rollback transactions within a stored procedure.
+
+Security: Permissions can be granted or denied at the stored procedure level, allowing fine-grained control over who can execute specific procedures.
+
+Syntax for creating a stored procedure (in SQL Server):
+
+CREATE PROCEDURE procedure_name
+    [ { @parameter_name [ AS ][ data_type ] } [ = default ] [ OUT | OUTPUT ] ]
+    [ ,...n ]
+[ WITH { EXECUTE AS { CALLER | SELF | OWNER | 'user_name' } } ]
+AS
+    -- SQL statements and logic for the procedure
+
+
+Function:
+
+Purpose: Functions are primarily used for computing and returning a single value. They take input parameters, perform a computation, and return the result. Functions do not modify data; they are used for data manipulation and calculations.
+
+Return Value: Functions must return a single value and cannot return output parameters. They often return scalar values or table-valued results.
+
+Transaction Control: Functions cannot contain explicit transaction control statements like BEGIN TRANSACTION, COMMIT, or ROLLBACK.
+
+Security: Permissions can be granted or denied at the function level, allowing control over who can execute specific functions.
+
+Syntax for creating a function (in SQL Server):
+
+Function:
+
+Purpose: Functions are primarily used for computing and returning a single value. They take input parameters, perform a computation, and return the result. Functions do not modify data; they are used for data manipulation and calculations.
+
+Return Value: Functions must return a single value and cannot return output parameters. They often return scalar values or table-valued results.
+
+Transaction Control: Functions cannot contain explicit transaction control statements like BEGIN TRANSACTION, COMMIT, or ROLLBACK.
+
+Security: Permissions can be granted or denied at the function level, allowing control over who can execute specific functions.
+
+Syntax for creating a function (in SQL Server):
+
+CREATE PROCEDURE GetEmployeeCount
+AS
+BEGIN
+    SELECT COUNT(*) AS EmployeeCount FROM Employees;
+END;
+
+
+CREATE FUNCTION GetEmployeeCount()
+RETURNS INT
+AS
+BEGIN
+    DECLARE @Count INT;
+    SELECT @Count = COUNT(*) FROM Employees;
+    RETURN @Count;
+END;
+
